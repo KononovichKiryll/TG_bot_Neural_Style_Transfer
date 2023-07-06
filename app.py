@@ -1,27 +1,17 @@
-from aiogram import Bot, Dispatcher, types
-from aiogram.utils import executor
-from dotenv import load_dotenv
-from dotenv import dotenv_values
+from utils.notify_admins import on_startup_notify
+from utils.set_bot_commands import set_default_commands
 
-load_dotenv()
-TOKEN = dotenv_values()['TOKEN']
-
-bot = Bot(token=TOKEN)
-
-dp = Dispatcher(bot=bot)
+from aiogram import executor
+from handlers import dp
 
 
-@dp.message_handler()
-# async def get_message(message):
-async def get_message(message: types.Message):
-    chat_id = message
-    print(message)
+async def on_startup(dp):
+    await on_startup_notify(dp)
+    await set_default_commands(dp)
 
-    chat_id = message.chat.id
-    text = 'hhhhi'
+    print('Bot is running')
 
-    await bot.send_message(chat_id=chat_id, text=text)
-    
-    await message.answer(text)
 
-executor.start_polling(dp)
+if __name__ == '__main__':
+
+    executor.start_polling(dp, on_startup=on_startup)
