@@ -6,8 +6,6 @@ from config.config import BOT_TOKEN
 
 bot = Bot(token=BOT_TOKEN, parse_mode=types.ParseMode.HTML)
 
-# storage=MemoryStorage()
+storage = MemoryStorage()
 
-dp = Dispatcher(bot=bot)
-
-
+dp = Dispatcher(bot=bot, storage=storage)
