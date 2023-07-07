@@ -12,8 +12,7 @@ async def command_start(message: types.Message):
     if message.text == '1':
         await message.answer('Добавь картинку стиля', reply_markup=kb_NST_menu)
     elif message.text == '2':
-        await message.answer('Добавь картинку контента',
-                             reply_markup=kb_NST_menu)
+        await message.answer('Добавь картинку контента', reply_markup=kb_NST_menu)
     else:
         await message.answer(f'Начинаю переносить стиль. Это займёт около {expected_time} минут',
                              reply_markup=kb_NN_selector)
