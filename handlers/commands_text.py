@@ -1,0 +1,7 @@
+start_text = 'start'
+help_text = 'help'
+back_text = 'Назад'
+next_text = 'Далее'
+NST_text = 'Перенос стиля'
+NST_cont_img_text = 'Загрузить картинку контента'
+NST_style_img_text = 'Загрузить картинку стиля'
