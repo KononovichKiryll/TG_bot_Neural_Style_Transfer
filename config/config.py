@@ -11,3 +11,9 @@ BOT_TOKEN = str(os.getenv('TOKEN'))
 admins_id = [
     "283245864",
 ]
+
+CACHE_PATH = 'local_storage'
+
+# STYLE_IMG_PATH = r'local_storage\style.jpg'
+# CONTEXT_IMG_PATH = r'local_storage\context.jpg'
+# OUTPUT_PATH = r'local_storage\output.jpg'

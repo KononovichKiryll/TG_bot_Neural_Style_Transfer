@@ -3,3 +3,4 @@ env
 .env
 re.txt
 setup.cfg
+local_storage
