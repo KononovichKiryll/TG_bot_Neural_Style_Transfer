@@ -15,7 +15,7 @@ from loader import bot
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 imsize = 512 if torch.cuda.is_available() else 128
-imsize = 512 if torch.cuda.is_available() else 256
+# imsize = 512 if torch.cuda.is_available() else 256
 # imsize = 512
 loader = transforms.Compose([
     transforms.Resize(imsize),
@@ -182,13 +182,14 @@ def image_loader(image_name, loader):
 
 
 class StyleTransferTread(Thread):
-    def __init__(self, message, style_img_path, content_img_path, output_path, loop):
+    def __init__(self, message, style_img_path, content_img_path, output_path, loop, state):
         Thread.__init__(self)
         self.style_img_path = style_img_path
         self.content_img_path = content_img_path
         self.output_path = output_path
         self.message = message
         self.loop = loop
+        self.state = state
 
     def run(self):
         style_img = image_loader(self.style_img_path, loader2)
@@ -199,15 +200,17 @@ class StyleTransferTread(Thread):
         #     "we need to import style and content images of the same size"
 
         output = run_style_transfer(cnn, cnn_normalization_mean, cnn_normalization_std,
-                                    content_img, style_img, input_img, num_steps=500)
+                                    content_img, style_img, input_img, num_steps=100)
 
         save_image(output, self.output_path)
         asyncio.run_coroutine_threadsafe(send_output_photo(
-            self.output_path, self.message), self.loop)
+            self.output_path, self.message, self.state), self.loop)
         return
 
 
-async def send_output_photo(output_path, message):
+async def send_output_photo(output_path, message, state):
     with open(output_path, 'rb') as output_file:
-        print('!!!!!!send photo!!!!!!!!')
+        # print('!!!!!!send photo!!!!!!!!')
+        await state.finish()
+        # print('!!!!!!send photo!!!!!!!!')
         await bot.send_photo(message.chat.id, output_file)

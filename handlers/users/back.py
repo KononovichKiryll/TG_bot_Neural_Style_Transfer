@@ -15,5 +15,5 @@ async def command_back(message: types.Message):
 @dp.message_handler(text=back_text, state=ImgAcceptState.all_states_names)
 async def command_img_back(message: types.Message, state: FSMContext):
     await state.finish()
-    await message.answer('Жду картинки',
+    await message.answer('Возвращайся если захочешь загрузить картинку',
                          reply_markup=kb_NST_menu)
