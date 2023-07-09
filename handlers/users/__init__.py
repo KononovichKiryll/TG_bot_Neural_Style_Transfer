@@ -5,6 +5,7 @@ from .next import dp
 from .NST_menu import dp
 from .NST_cont_img import dp
 from .NST_style_img import dp
+from .settings import dp
 
 from .media import dp
 

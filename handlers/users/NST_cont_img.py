@@ -6,7 +6,7 @@ from app_states.states import ImgAcceptState
 
 
 @dp.message_handler(text=NST_cont_img_text)
-async def command_start(message: types.Message):
+async def command_NST_cont_img(message: types.Message):
     text = 'Загрузи картинку для изменения'
     await ImgAcceptState.content.set()
     await message.answer(text, reply_markup=kb_NST_menu)

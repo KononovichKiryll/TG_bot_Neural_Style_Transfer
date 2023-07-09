@@ -1,5 +1,5 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
-from handlers.commands_text import NST_text
+from handlers.commands_text import NST_text, settings_text
 
 
 kb_NN_selector = ReplyKeyboardMarkup(
@@ -8,7 +8,7 @@ kb_NN_selector = ReplyKeyboardMarkup(
             KeyboardButton(text=NST_text),
         ],
         [
-            KeyboardButton(text='что-то ещё'),
+            KeyboardButton(text=settings_text),
         ],
     ],
     resize_keyboard=True,

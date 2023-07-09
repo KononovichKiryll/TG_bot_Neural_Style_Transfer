@@ -17,8 +17,7 @@ expected_time = 10
 
 
 @dp.message_handler(text=next_text, state='*')
-# @dp.async_task
-async def command_start(message: types.Message, state: FSMContext):
+async def command_next(message: types.Message, state: FSMContext):
     await state.finish()
 
     user_id = message.from_user.id
@@ -33,9 +32,6 @@ async def command_start(message: types.Message, state: FSMContext):
     else:
         await message.answer(f'Начинаю переносить стиль. Это займёт около {expected_time} минут',
                              reply_markup=kb_NN_selector)
-
-        # print(dp.get_current().current_state())
-        # state.set_state()
 
         await ImgAcceptState.in_proces.set()
         loop = asyncio.get_running_loop()
