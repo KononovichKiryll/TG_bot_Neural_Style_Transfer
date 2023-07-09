@@ -7,7 +7,7 @@ Telegram Style Transfer bot
 - [Описание проекта](#Description)
 - [Установка проекта](#Setup)
      - [Установка зависимостей](#dependencies)
-     - [Развёртывание образа](#doker)
+     - [Создание образа Docker](#docker)
      - [Необходимые токены](#Tokens)
 - [Работа с ботом](#Bot)
      - [Команды](#Commands)
@@ -27,9 +27,16 @@ Telegram Style Transfer bot
 Необходимые зависимости описаны в файле `requarements.txt`.  
 Для работы использовались версии PyTorch: `torch-2.0.0+cpu-cp310-cp310-win_amd64.whl`, и `torchvision-0.15.1+cpu-cp310-cp310-win_amd64.whl` доступные на официальном сайте PyTorch по ссылке: https://download.pytorch.org/whl/cpu/torch_stable.html. Возможно использование других версий PyTorch не ниже версии 2.0.0 и CUDA, доступных здесь: https://pytorch.org/get-started/locally/
 
-## Развёртывание образа <a name="doker"></a>
+## Создание образа Docker и запуск бота<a name="docker"></a>
 
-ТУТ ДОКЕР
+Для создания и развёртывания образа необходимо:
+1. В файле Dockerfile указать токена бота `TG_BOT_TOKEN` в переменную окружения `ENV`:  
+     `ENV TG_BOT_TOKEN 1234567`  
+2. Создать образ выполнив команду в терминале:
+     `docker build -t bot .`
+3. После создания образа запустить контейнер:
+     `docker run --name NST_bot -d bot`
+4. Бот работает! Первый запуск бота будет может занять некоторое время, PyTorch будет скачивать модели.
 
 ## Необходимые токены <a name="Tokens"></a>
   

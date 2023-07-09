@@ -1,0 +1,10 @@
+gif_screnshots
+.dockerignore
+DLS_final_project.code-workspace
+env
+.env
+re.txt
+setup.cfg
+local_storage
+.gitignore
+readme.md
