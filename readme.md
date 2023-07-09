@@ -60,12 +60,12 @@ Telegram Style Transfer bot
 
 Примеры работы бота:
 Переходим в меню создания картики, загружаем картинку которую хоти изменить и картинку стиля. Запустим процесс переноса стиля. Для картинок маленького разрешения процесс происходит достаточно быстро:   
-![gif_1.gif](attachment:gif_1.gif)  
+![gif_1.gif](https://github.com/KononovichKiryll/TG_bot_Neural_Style_Transfer/blob/main/gif_screnshots/gif_1.gif)  
 Процесс переноса стиля происходит асинхронно, поэтому бот реагирует на команды но для экономии ресурсов они заблокированы.  
   
   
 Перед запуском бота можно настроить разрешение картинки и количество итераций:  
-![gif_2.gif](attachment:gif_2.gif)  
+![gif_2.gif](https://github.com/KononovichKiryll/TG_bot_Neural_Style_Transfer/blob/main/gif_screnshots/gif_2.gif)
   
 Результат:  
-![Screenshot_4.png](attachment:Screenshot_4.png)
+![attachment:Screenshot_4.png](https://github.com/KononovichKiryll/TG_bot_Neural_Style_Transfer/blob/main/gif_screnshots/Screenshot_4.png)
