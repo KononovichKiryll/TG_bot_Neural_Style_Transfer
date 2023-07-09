@@ -1,7 +1,7 @@
 from aiogram import types
 from loader import dp
 from app_keyboard import kb_NST_menu
-from handlers.commands_text import NST_text
+from handlers.commands_text import NST_text, settings_text
 from app_states.states import ImgAcceptState
 
 
@@ -15,7 +15,7 @@ async def command_NST_menu(message: types.Message):
     await message.answer(text, reply_markup=kb_NST_menu)
 
 
-@dp.message_handler(text=NST_text, state=ImgAcceptState.in_proces)
+@dp.message_handler(text=[NST_text, settings_text], state=ImgAcceptState.in_proces)
 async def command_NST_menu_in_process(message: types.Message):
     text = 'Пока что я занимаюсь предыдущей задачей, но я скоро закончу!\n'
 

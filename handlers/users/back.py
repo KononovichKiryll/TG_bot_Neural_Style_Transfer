@@ -23,5 +23,5 @@ async def command_img_back(message: types.Message, state: FSMContext):
                                            ImgAcceptState.set_resolution])
 async def command_settings_back(message: types.Message, state: FSMContext):
     await state.finish()
-    await message.answer('Возвращайся если захочешь загрузить картинку',
+    await message.answer('Настройки не были изменены',
                          reply_markup=kb_settings)

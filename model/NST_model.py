@@ -197,7 +197,6 @@ class StyleTransferTread(Thread):
 
     def run(self):
         imgsize, iterations = get_conf(self.path)
-        print(imgsize, iterations)
         loader = get_loaders(int(imgsize))
         style_img = image_loader(self.style_img_path, loader)
         content_img = image_loader(self.content_img_path, loader)

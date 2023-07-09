@@ -8,7 +8,6 @@ from handlers import dp
 async def on_startup(dp):
     await on_startup_notify(dp)
     await set_default_commands(dp)
-
     print('Bot is running')
 
 
