@@ -1,3 +1,7 @@
+# This most part of code was taken from here:
+# https://pytorch.org/tutorials/advanced/neural_style_tutorial.html
+# It was refactored and implemented for used by bot
+
 import asyncio
 from threading import Thread
 import torch
@@ -18,19 +22,11 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 def get_loaders(imsize):
-    # imsize = 512 if torch.cuda.is_available() else 128
-    # imsize = 512 if torch.cuda.is_available() else 256
-    # imsize = 512
     loader = transforms.Compose([
         transforms.Resize(imsize),
         transforms.CenterCrop(imsize),
         transforms.ToTensor()])
 
-    # loader2 = transforms.Compose([
-    #     # transforms.Grayscale(3),
-    #     transforms.Resize(imsize),
-    #     transforms.CenterCrop(imsize),
-    #     transforms.ToTensor()])
     return loader
 
 
@@ -200,16 +196,12 @@ class StyleTransferTread(Thread):
         self.path = f'{CACHE_PATH}/{message.from_user.id}'
 
     def run(self):
-
         imgsize, iterations = get_conf(self.path)
         print(imgsize, iterations)
         loader = get_loaders(int(imgsize))
         style_img = image_loader(self.style_img_path, loader)
         content_img = image_loader(self.content_img_path, loader)
         input_img = content_img.clone()
-
-        # assert style_img.size() == content_img.size(), \
-        #     "we need to import style and content images of the same size"
 
         output = run_style_transfer(cnn, cnn_normalization_mean, cnn_normalization_std,
                                     content_img, style_img, input_img, num_steps=int(iterations))
@@ -223,7 +215,5 @@ class StyleTransferTread(Thread):
 
 async def send_output_photo(output_path, message, state):
     with open(output_path, 'rb') as output_file:
-        print('!!!!!!send photo!!!!!!!!')
         await state.finish()
-        # print('!!!!!!send photo!!!!!!!!')
         await bot.send_photo(message.chat.id, output_file)

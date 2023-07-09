@@ -7,8 +7,6 @@ from config.config import CACHE_PATH
 
 def create_def_config(path):
     path = pathlib.Path(CACHE_PATH, str(path))
-    # print(path)
-    # print(os.path.exists(path))
     if not os.path.exists(path):
         os.makedirs(path)
 
@@ -36,9 +34,3 @@ def get_conf(path):
     config = configparser.ConfigParser()
     config.read(path)
     return config['user']['imgsize'], config['user']['iterations']
-
-
-# path = 'user'
-# create_def_config(path)
-# change_conf('imgsize', 1024, path)
-# get_conf(path)

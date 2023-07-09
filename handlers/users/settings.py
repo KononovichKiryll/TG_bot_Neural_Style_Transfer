@@ -1,7 +1,7 @@
 from aiogram import types
 from loader import dp
 from app_keyboard import kb_settings
-from handlers.commands_text import settings_text, set_resolution_text,set_iterations_text
+from handlers.commands_text import settings_text, set_resolution_text, set_iterations_text
 from app_states.states import ImgAcceptState
 
 from aiogram.dispatcher import FSMContext
@@ -38,7 +38,7 @@ async def get_resolution_value(message: types.Message, state: FSMContext):
     user_id = message.from_user.id
     path = f'{CACHE_PATH}/{user_id}'
     change_conf('imgsize', message.text, path)
-    await message.reply('Значение разрешения изменено')
+    await message.reply('Значение разрешения изменено', reply_markup=kb_settings)
     await state.finish()
 
 
@@ -54,5 +54,5 @@ async def get_iter_number(message: types.Message, state: FSMContext):
     user_id = message.from_user.id
     path = f'{CACHE_PATH}/{user_id}'
     change_conf('iterations', message.text, path)
-    await message.reply('Значение количества итераций изменено')
+    await message.reply('Значение количества итераций изменено', reply_markup=kb_settings)
     await state.finish()
