@@ -1,78 +1,79 @@
 Telegram Style Transfer bot
 ==============
 ---
-Это учебный проект бота с функцией переноса стиля изображений по алгориту Neural Style Transfer  
-  
-***Содержание:***
-- [Описание проекта](#Description)
-- [Установка проекта](#Setup)
-     - [Установка зависимостей](#dependencies)
-     - [Создание образа Docker](#docker)
-     - [Необходимые токены](#Tokens)
-- [Работа с ботом](#Bot)
-     - [Команды](#Commands)
-     - [Примеры](#Samples)
+This is study project of telegramm bot with stule transfer function with using Neural Style Transfer alghoritm.
+
+***Contents:***
+- [Project description](#Description)
+- [Project setup](#Setup)
+     - [Dependencies](#dependencies)
+     - [Docker image](#docker)
+     - [Tokens](#Tokens)
+- [Working with Bot](#Bot)
+     - [Commands](#Commands)
+     - [Examples](#Samples)
  
 
-# Описание проекта <a name="Description"></a>
+# Project description <a name="Description"></a>
 
-**Telegram Style Transfer bot** — Это учебный проект бота с функцией переноса стиля по алгориту Neural Style Transfer(NST). Задачай проекта являлось написание работающего телеграмм бота который может принимать изображения и обрабатывать их. Обработка осуществлялась с использованием ML алгоритма NST описанного по этой ссылке: https://pytorch.org/tutorials/advanced/neural_style_tutorial.html. 
+**Telegram Style Transfer bot** — This is study project of telegramm bot with stule transfer function with using Neural Style Transfer alghoritm.(NST). 
+The main aim of the project is to create the working telegramm bot who can accept images and transform them. For transformation I used the ML-alghoritm NST (see link for details: https://pytorch.org/tutorials/advanced/neural_style_tutorial.html.)
   
-# Установка проекта <a name="Setup"></a>
+# Project setup <a name="Setup"></a>
 
-В проекте использовались фреймворки Аiogram для написания бота и PyTorch для работы ML-модели. Версия Python 3.10.
+In project used Аiogram for bot anf PyThorch for ML-model. Python ver 3.10
 
-## Установка зависимостей <a name="dependencies"></a>
+## Dependencies <a name="dependencies"></a>
 
-Необходимые зависимости описаны в файле `requarements.txt`.  
-Для работы использовались версии PyTorch: `torch-2.0.0+cpu-cp310-cp310-win_amd64.whl`, и `torchvision-0.15.1+cpu-cp310-cp310-win_amd64.whl` доступные на официальном сайте PyTorch по ссылке: https://download.pytorch.org/whl/cpu/torch_stable.html. Возможно использование других версий PyTorch не ниже версии 2.0.0 и CUDA, доступных здесь: https://pytorch.org/get-started/locally/
+All needed dependencies described in `requarements.txt`.  
+PyTorch versions used: `torch-2.0.0+cpu-cp310-cp310-win_amd64.whl`, and `torchvision-0.15.1+cpu-cp310-cp310-win_amd64.whl` avaible on PyTorch official website: https://download.pytorch.org/whl/cpu/torch_stable.html. You can also used another PyTorch version (>2.0.0) and CUDA, avaible on: https://pytorch.org/get-started/locally/
 
-## Создание образа Docker и запуск бота<a name="docker"></a>
+## Docker image<a name="docker"></a>
 
-Для создания и развёртывания образа необходимо:
-1. В файле Dockerfile указать токена бота `TG_BOT_TOKEN` в переменную окружения `ENV`:  
+To create and run bot:
+1. Add to the Dockerfile the bot token in `TG_BOT_TOKEN` in enviroment variable `ENV`:  
      `ENV TG_BOT_TOKEN 1234567`  
-2. Создать образ выполнив команду в терминале:
+2. Create image using this command:
      `docker build -t bot .`
-3. После создания образа запустить контейнер:
+3. Run container:
      `docker run --name NST_bot -d bot`
-4. Бот работает! Первый запуск бота будет может занять некоторое время, PyTorch будет скачивать модели.
+4. Bot is running! First run may take some time, PyTorch will download models he needed.
 
-## Необходимые токены <a name="Tokens"></a>
+## Tokens <a name="Tokens"></a>
   
-Для работы бота необходимо в корне репозитория создать файл с переменными окружения `.env` с указанием токена бота в переменной `TG_BOT_TOKEN`.
-Так же в файле `config.config` в переменную `ADMINS_ID` можно указать ID администраторов бота для отслеживания запуска работы бота (опцтонально). 
+Create file with enviroment variables `.env` and add bot token in variable `TG_BOT_TOKEN`.
+Also in `config.config` in variable `ADMINS_ID` you can add administrator id to check the bot running (optional). 
 
   
-# Работа с ботом <a name="Bot"></a>
+# Working with Bot <a name="Bot"></a>
 
-## Команды <a name="Commands"></a>
+## Commands <a name="Commands"></a>
 
-Все доступные боту комманды указаны в всплывающей клавиатуре. На иные комманды бот будет выдавать сообщение об ошибке.  
-Список команд:
-- `/start` - запуск бота
-- `/help` - помощь
-- `Перенос стиля` - переход в меню переноса стиля
-     - `Загрузить картинку контента` - загрузка картинки контента
-     - `Загрузить картинку стиля` - загрузка картинки контента
-     - `Назад` - возврат к предыдущему меню/отмена действия
-     - `Далее` - возврат к предыдущему меню/отмена действия
-- `Настройки` - переход в меню настроек
-     - `Установить разрешение` - установка разрешения для выходной картинки
-     - `Установить количество итераций` - установка количества итераций алгоритма
-     - `Назад` - возврат к предыдущему меню/отмена действия
+You can find all commands in keyboard. All other commands will have error message.
+Commands list:
+- `/start` - bot start
+- `/help` - help
+- `Style transfer` - stule transfer menu
+     - `Load content image` - load content image
+     - `Load style image` - load style image
+     - `Back` - back to preveous menu/cancel
+     - `Next` - next
+- `Settings` - settings menu
+     - `Set resolution` - set the image resolution
+     - `Set iterations number` - set the alghorithm iterations
+     - `Back` - back to preveous menu/cancel
 
 
-## Примеры <a name="Samples"></a>
+## Examples <a name="Samples"></a>
 
-Примеры работы бота:
-Переходим в меню создания картики, загружаем картинку которую хоти изменить и картинку стиля. Запустим процесс переноса стиля. Для картинок маленького разрешения процесс происходит достаточно быстро:   
+Examples:
+Go to transfer menu, load the content image and style image. Run the transfr process. It will be fast for low-resollution images:
 ![gif_1.gif](https://github.com/KononovichKiryll/TG_bot_Neural_Style_Transfer/blob/main/gif_screnshots/gif_1.gif)  
-Процесс переноса стиля происходит асинхронно, поэтому бот реагирует на команды но для экономии ресурсов они заблокированы.  
+Till the process bot will be locked but answer the questions.  
   
   
-Перед запуском бота можно настроить разрешение картинки и количество итераций:  
+You can set the resolution and the number of iterations befor start:  
 ![gif_2.gif](https://github.com/KononovichKiryll/TG_bot_Neural_Style_Transfer/blob/main/gif_screnshots/gif_2.gif)
   
-Результат:  
+Result:  
 ![attachment:Screenshot_4.png](https://github.com/KononovichKiryll/TG_bot_Neural_Style_Transfer/blob/main/gif_screnshots/Screenshot_4.png)
