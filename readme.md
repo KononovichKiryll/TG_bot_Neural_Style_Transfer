@@ -67,7 +67,7 @@ Commands list:
 ## Examples <a name="Samples"></a>
 
 Examples:
-Go to transfer menu, load the content image and style image. Run the transfr process. It will be fast for low-resollution images:
+Go to transfer menu, load the content image and style image. Run the transfr process. It will be fast for low-resollution images:  
 ![gif_1.gif](https://github.com/KononovichKiryll/TG_bot_Neural_Style_Transfer/blob/main/gif_screnshots/gif_1.gif)  
 Till the process bot will be locked but answer the questions.  
   
